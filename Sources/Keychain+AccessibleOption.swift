@@ -22,6 +22,8 @@
 //  THE SOFTWARE.
 //
 
+import Security
+
 extension Keychain {
 
     public enum AccessibleOption: RawRepresentable {

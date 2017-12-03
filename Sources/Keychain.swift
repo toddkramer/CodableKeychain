@@ -22,6 +22,7 @@
 //  THE SOFTWARE.
 //
 
+import Foundation
 import Security
 
 public final class Keychain {
