@@ -33,6 +33,20 @@
 		9B8F39391FD46861005AA8EB /* KeychainAccessibleOptionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8F39371FD46861005AA8EB /* KeychainAccessibleOptionTests.swift */; };
 		9B8F393B1FD4764F005AA8EB /* KeychainErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8F393A1FD4764F005AA8EB /* KeychainErrorTests.swift */; };
 		9B8F393C1FD4764F005AA8EB /* KeychainErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8F393A1FD4764F005AA8EB /* KeychainErrorTests.swift */; };
+		9B8F39591FD48710005AA8EB /* CFString+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8F39311FD463A5005AA8EB /* CFString+Additions.swift */; };
+		9B8F395A1FD48714005AA8EB /* CodableKeychain.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B125B571FCF967000529304 /* CodableKeychain.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9B8F395B1FD4871A005AA8EB /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B125B891FCF99A900529304 /* Keychain.swift */; };
+		9B8F395C1FD4871A005AA8EB /* KeychainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8F39271FD462B3005AA8EB /* KeychainError.swift */; };
+		9B8F395D1FD4871A005AA8EB /* KeychainStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8F392A1FD462FF005AA8EB /* KeychainStorable.swift */; };
+		9B8F395E1FD4871A005AA8EB /* KeychainAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8F392D1FD46357005AA8EB /* KeychainAttributes.swift */; };
+		9B8F395F1FD4871A005AA8EB /* Keychain+AccessibleOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8F39341FD463F9005AA8EB /* Keychain+AccessibleOption.swift */; };
+		9B8F39701FD48844005AA8EB /* CodableKeychain.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B125B571FCF967000529304 /* CodableKeychain.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9B8F39711FD48849005AA8EB /* CFString+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8F39311FD463A5005AA8EB /* CFString+Additions.swift */; };
+		9B8F39721FD4884D005AA8EB /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B125B891FCF99A900529304 /* Keychain.swift */; };
+		9B8F39731FD4884D005AA8EB /* KeychainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8F39271FD462B3005AA8EB /* KeychainError.swift */; };
+		9B8F39741FD4884D005AA8EB /* KeychainStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8F392A1FD462FF005AA8EB /* KeychainStorable.swift */; };
+		9B8F39751FD4884D005AA8EB /* KeychainAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8F392D1FD46357005AA8EB /* KeychainAttributes.swift */; };
+		9B8F39761FD4884D005AA8EB /* Keychain+AccessibleOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8F39341FD463F9005AA8EB /* Keychain+AccessibleOption.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +97,8 @@
 		9B8F39341FD463F9005AA8EB /* Keychain+AccessibleOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Keychain+AccessibleOption.swift"; sourceTree = "<group>"; };
 		9B8F39371FD46861005AA8EB /* KeychainAccessibleOptionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainAccessibleOptionTests.swift; sourceTree = "<group>"; };
 		9B8F393A1FD4764F005AA8EB /* KeychainErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainErrorTests.swift; sourceTree = "<group>"; };
+		9B8F39421FD486C9005AA8EB /* CodableKeychain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CodableKeychain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B8F39681FD487FD005AA8EB /* CodableKeychain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CodableKeychain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +139,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9B8F393E1FD486C9005AA8EB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9B8F39641FD487FD005AA8EB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -144,6 +174,8 @@
 				9B125B991FD3644400529304 /* CodableKeychain.framework */,
 				9B125BA11FD3644400529304 /* CodableKeychainMacTests.xctest */,
 				9B125BB71FD36F3B00529304 /* MobileHost.app */,
+				9B8F39421FD486C9005AA8EB /* CodableKeychain.framework */,
+				9B8F39681FD487FD005AA8EB /* CodableKeychain.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -211,6 +243,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B125BB21FD3647C00529304 /* CodableKeychain.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9B8F393F1FD486C9005AA8EB /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B8F395A1FD48714005AA8EB /* CodableKeychain.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9B8F39651FD487FD005AA8EB /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B8F39701FD48844005AA8EB /* CodableKeychain.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,13 +355,49 @@
 			productReference = 9B125BB71FD36F3B00529304 /* MobileHost.app */;
 			productType = "com.apple.product-type.application";
 		};
+		9B8F39411FD486C9005AA8EB /* CodableKeychainTV */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9B8F39531FD486C9005AA8EB /* Build configuration list for PBXNativeTarget "CodableKeychainTV" */;
+			buildPhases = (
+				9B8F393D1FD486C9005AA8EB /* Sources */,
+				9B8F393E1FD486C9005AA8EB /* Frameworks */,
+				9B8F393F1FD486C9005AA8EB /* Headers */,
+				9B8F39401FD486C9005AA8EB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CodableKeychainTV;
+			productName = CodableKeychainTV;
+			productReference = 9B8F39421FD486C9005AA8EB /* CodableKeychain.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		9B8F39671FD487FD005AA8EB /* CodableKeychainWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9B8F396D1FD487FD005AA8EB /* Build configuration list for PBXNativeTarget "CodableKeychainWatch" */;
+			buildPhases = (
+				9B8F39631FD487FD005AA8EB /* Sources */,
+				9B8F39641FD487FD005AA8EB /* Frameworks */,
+				9B8F39651FD487FD005AA8EB /* Headers */,
+				9B8F39661FD487FD005AA8EB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CodableKeychainWatch;
+			productName = CodableKeychainWatch;
+			productReference = 9B8F39681FD487FD005AA8EB /* CodableKeychain.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		9B125B331FCF95CB00529304 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0900;
+				LastSwiftUpdateCheck = 0910;
 				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = "Todd Kramer";
 				TargetAttributes = {
@@ -344,6 +428,14 @@
 							};
 						};
 					};
+					9B8F39411FD486C9005AA8EB = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Manual;
+					};
+					9B8F39671FD487FD005AA8EB = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Manual;
+					};
 				};
 			};
 			buildConfigurationList = 9B125B361FCF95CB00529304 /* Build configuration list for PBXProject "CodableKeychain" */;
@@ -361,9 +453,11 @@
 			targets = (
 				9B125B3B1FCF95CB00529304 /* CodableKeychainMobile */,
 				9B125B441FCF95CB00529304 /* CodableKeychainMobileTests */,
+				9B125BB61FD36F3B00529304 /* MobileHost */,
 				9B125B981FD3644400529304 /* CodableKeychainMac */,
 				9B125BA01FD3644400529304 /* CodableKeychainMacTests */,
-				9B125BB61FD36F3B00529304 /* MobileHost */,
+				9B8F39411FD486C9005AA8EB /* CodableKeychainTV */,
+				9B8F39671FD487FD005AA8EB /* CodableKeychainWatch */,
 			);
 		};
 /* End PBXProject section */
@@ -404,6 +498,20 @@
 				9B125BC41FD36F3B00529304 /* LaunchScreen.storyboard in Resources */,
 				9B125BC11FD36F3B00529304 /* Assets.xcassets in Resources */,
 				9B125BBF1FD36F3B00529304 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9B8F39401FD486C9005AA8EB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9B8F39661FD487FD005AA8EB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,6 +569,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B125BBA1FD36F3B00529304 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9B8F393D1FD486C9005AA8EB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B8F395F1FD4871A005AA8EB /* Keychain+AccessibleOption.swift in Sources */,
+				9B8F39591FD48710005AA8EB /* CFString+Additions.swift in Sources */,
+				9B8F395D1FD4871A005AA8EB /* KeychainStorable.swift in Sources */,
+				9B8F395E1FD4871A005AA8EB /* KeychainAttributes.swift in Sources */,
+				9B8F395C1FD4871A005AA8EB /* KeychainError.swift in Sources */,
+				9B8F395B1FD4871A005AA8EB /* Keychain.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9B8F39631FD487FD005AA8EB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B8F39761FD4884D005AA8EB /* Keychain+AccessibleOption.swift in Sources */,
+				9B8F39711FD48849005AA8EB /* CFString+Additions.swift in Sources */,
+				9B8F39741FD4884D005AA8EB /* KeychainStorable.swift in Sources */,
+				9B8F39751FD4884D005AA8EB /* KeychainAttributes.swift in Sources */,
+				9B8F39731FD4884D005AA8EB /* KeychainError.swift in Sources */,
+				9B8F39721FD4884D005AA8EB /* Keychain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -826,6 +960,104 @@
 			};
 			name = Release;
 		};
+		9B8F39541FD486C9005AA8EB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Manual;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Sources/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.toddkramer.CodableKeychainTV;
+				PRODUCT_NAME = CodableKeychain;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		9B8F39551FD486C9005AA8EB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Manual;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Sources/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.toddkramer.CodableKeychainTV;
+				PRODUCT_NAME = CodableKeychain;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Release;
+		};
+		9B8F396E1FD487FD005AA8EB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Manual;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Sources/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.toddkramer.CodableKeychainWatch;
+				PRODUCT_NAME = CodableKeychain;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		9B8F396F1FD487FD005AA8EB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Manual;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Sources/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.toddkramer.CodableKeychainWatch;
+				PRODUCT_NAME = CodableKeychain;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -879,6 +1111,24 @@
 			buildConfigurations = (
 				9B125BC71FD36F3B00529304 /* Debug */,
 				9B125BC81FD36F3B00529304 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9B8F39531FD486C9005AA8EB /* Build configuration list for PBXNativeTarget "CodableKeychainTV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9B8F39541FD486C9005AA8EB /* Debug */,
+				9B8F39551FD486C9005AA8EB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9B8F396D1FD487FD005AA8EB /* Build configuration list for PBXNativeTarget "CodableKeychainWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9B8F396E1FD487FD005AA8EB /* Debug */,
+				9B8F396F1FD487FD005AA8EB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
