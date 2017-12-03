@@ -22,6 +22,8 @@
 //  THE SOFTWARE.
 //
 
+import CoreFoundation
+
 extension CFString {
 
     var stringValue: String {

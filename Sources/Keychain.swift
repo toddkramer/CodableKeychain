@@ -22,6 +22,8 @@
 //  THE SOFTWARE.
 //
 
+import Security
+
 public final class Keychain {
 
     private enum Constants {
