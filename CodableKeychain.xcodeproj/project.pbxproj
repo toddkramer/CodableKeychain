@@ -99,6 +99,7 @@
 		9B8F393A1FD4764F005AA8EB /* KeychainErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainErrorTests.swift; sourceTree = "<group>"; };
 		9B8F39421FD486C9005AA8EB /* CodableKeychain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CodableKeychain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B8F39681FD487FD005AA8EB /* CodableKeychain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CodableKeychain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B8F39771FD48A64005AA8EB /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +160,7 @@
 		9B125B321FCF95CB00529304 = {
 			isa = PBXGroup;
 			children = (
+				9B8F39771FD48A64005AA8EB /* Package.swift */,
 				9B125B561FCF967000529304 /* Sources */,
 				9B125B591FCF967000529304 /* Tests */,
 				9B125BB81FD36F3B00529304 /* MobileHost */,
