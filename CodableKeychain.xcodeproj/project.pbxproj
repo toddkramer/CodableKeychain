@@ -185,9 +185,9 @@
 		9B125B561FCF967000529304 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				9B8F39301FD46381005AA8EB /* Extensions */,
 				9B125B571FCF967000529304 /* CodableKeychain.h */,
 				9B125B581FCF967000529304 /* Info.plist */,
+				9B8F39311FD463A5005AA8EB /* CFString+Additions.swift */,
 				9B125B891FCF99A900529304 /* Keychain.swift */,
 				9B8F39271FD462B3005AA8EB /* KeychainError.swift */,
 				9B8F392A1FD462FF005AA8EB /* KeychainStorable.swift */,
@@ -219,14 +219,6 @@
 				9B125BC51FD36F3B00529304 /* Info.plist */,
 			);
 			path = MobileHost;
-			sourceTree = "<group>";
-		};
-		9B8F39301FD46381005AA8EB /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				9B8F39311FD463A5005AA8EB /* CFString+Additions.swift */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
