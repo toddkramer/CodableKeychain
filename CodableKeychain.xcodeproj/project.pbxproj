@@ -61,7 +61,7 @@
 
 /* Begin PBXFileReference section */
 		9B125B3C1FCF95CB00529304 /* CodableKeychain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CodableKeychain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9B125B451FCF95CB00529304 /* CodableKeychainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CodableKeychainTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B125B451FCF95CB00529304 /* CodableKeychainMobileTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CodableKeychainMobileTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B125B571FCF967000529304 /* CodableKeychain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CodableKeychain.h; sourceTree = "<group>"; };
 		9B125B581FCF967000529304 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B125B5A1FCF967000529304 /* KeychainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainTests.swift; sourceTree = "<group>"; };
@@ -69,13 +69,13 @@
 		9B125B891FCF99A900529304 /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		9B125B991FD3644400529304 /* CodableKeychain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CodableKeychain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B125BA11FD3644400529304 /* CodableKeychainMacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CodableKeychainMacTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9B125BB71FD36F3B00529304 /* KeychainTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeychainTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B125BB71FD36F3B00529304 /* MobileHost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileHost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B125BB91FD36F3B00529304 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9B125BBE1FD36F3B00529304 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9B125BC01FD36F3B00529304 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9B125BC31FD36F3B00529304 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B125BC51FD36F3B00529304 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9B125BCB1FD376C600529304 /* KeychainTest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KeychainTest.entitlements; sourceTree = "<group>"; };
+		9B125BCB1FD376C600529304 /* MobileHost.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MobileHost.entitlements; sourceTree = "<group>"; };
 		9B8F39271FD462B3005AA8EB /* KeychainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainError.swift; sourceTree = "<group>"; };
 		9B8F392A1FD462FF005AA8EB /* KeychainStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStorable.swift; sourceTree = "<group>"; };
 		9B8F392D1FD46357005AA8EB /* KeychainAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainAttributes.swift; sourceTree = "<group>"; };
@@ -131,7 +131,7 @@
 			children = (
 				9B125B561FCF967000529304 /* Sources */,
 				9B125B591FCF967000529304 /* Tests */,
-				9B125BB81FD36F3B00529304 /* KeychainTest */,
+				9B125BB81FD36F3B00529304 /* MobileHost */,
 				9B125B3D1FCF95CB00529304 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -140,10 +140,10 @@
 			isa = PBXGroup;
 			children = (
 				9B125B3C1FCF95CB00529304 /* CodableKeychain.framework */,
-				9B125B451FCF95CB00529304 /* CodableKeychainTests.xctest */,
+				9B125B451FCF95CB00529304 /* CodableKeychainMobileTests.xctest */,
 				9B125B991FD3644400529304 /* CodableKeychain.framework */,
 				9B125BA11FD3644400529304 /* CodableKeychainMacTests.xctest */,
-				9B125BB71FD36F3B00529304 /* KeychainTest.app */,
+				9B125BB71FD36F3B00529304 /* MobileHost.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -174,17 +174,17 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
-		9B125BB81FD36F3B00529304 /* KeychainTest */ = {
+		9B125BB81FD36F3B00529304 /* MobileHost */ = {
 			isa = PBXGroup;
 			children = (
-				9B125BCB1FD376C600529304 /* KeychainTest.entitlements */,
+				9B125BCB1FD376C600529304 /* MobileHost.entitlements */,
 				9B125BB91FD36F3B00529304 /* AppDelegate.swift */,
 				9B125BBD1FD36F3B00529304 /* Main.storyboard */,
 				9B125BC01FD36F3B00529304 /* Assets.xcassets */,
 				9B125BC21FD36F3B00529304 /* LaunchScreen.storyboard */,
 				9B125BC51FD36F3B00529304 /* Info.plist */,
 			);
-			path = KeychainTest;
+			path = MobileHost;
 			sourceTree = "<group>";
 		};
 		9B8F39301FD46381005AA8EB /* Extensions */ = {
@@ -235,9 +235,9 @@
 			productReference = 9B125B3C1FCF95CB00529304 /* CodableKeychain.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		9B125B441FCF95CB00529304 /* CodableKeychainTests */ = {
+		9B125B441FCF95CB00529304 /* CodableKeychainMobileTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9B125B531FCF95CB00529304 /* Build configuration list for PBXNativeTarget "CodableKeychainTests" */;
+			buildConfigurationList = 9B125B531FCF95CB00529304 /* Build configuration list for PBXNativeTarget "CodableKeychainMobileTests" */;
 			buildPhases = (
 				9B125B411FCF95CB00529304 /* Sources */,
 				9B125B421FCF95CB00529304 /* Frameworks */,
@@ -249,9 +249,9 @@
 				9B125B481FCF95CB00529304 /* PBXTargetDependency */,
 				9B125BCA1FD36F5900529304 /* PBXTargetDependency */,
 			);
-			name = CodableKeychainTests;
+			name = CodableKeychainMobileTests;
 			productName = CodableKeychainTests;
-			productReference = 9B125B451FCF95CB00529304 /* CodableKeychainTests.xctest */;
+			productReference = 9B125B451FCF95CB00529304 /* CodableKeychainMobileTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		9B125B981FD3644400529304 /* CodableKeychainMac */ = {
@@ -290,9 +290,9 @@
 			productReference = 9B125BA11FD3644400529304 /* CodableKeychainMacTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		9B125BB61FD36F3B00529304 /* KeychainTest */ = {
+		9B125BB61FD36F3B00529304 /* MobileHost */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9B125BC61FD36F3B00529304 /* Build configuration list for PBXNativeTarget "KeychainTest" */;
+			buildConfigurationList = 9B125BC61FD36F3B00529304 /* Build configuration list for PBXNativeTarget "MobileHost" */;
 			buildPhases = (
 				9B125BB31FD36F3B00529304 /* Sources */,
 				9B125BB41FD36F3B00529304 /* Frameworks */,
@@ -302,9 +302,9 @@
 			);
 			dependencies = (
 			);
-			name = KeychainTest;
+			name = MobileHost;
 			productName = KeychainTest;
-			productReference = 9B125BB71FD36F3B00529304 /* KeychainTest.app */;
+			productReference = 9B125BB71FD36F3B00529304 /* MobileHost.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -360,10 +360,10 @@
 			projectRoot = "";
 			targets = (
 				9B125B3B1FCF95CB00529304 /* CodableKeychainMobile */,
-				9B125B441FCF95CB00529304 /* CodableKeychainTests */,
+				9B125B441FCF95CB00529304 /* CodableKeychainMobileTests */,
 				9B125B981FD3644400529304 /* CodableKeychainMac */,
 				9B125BA01FD3644400529304 /* CodableKeychainMacTests */,
-				9B125BB61FD36F3B00529304 /* KeychainTest */,
+				9B125BB61FD36F3B00529304 /* MobileHost */,
 			);
 		};
 /* End PBXProject section */
@@ -479,7 +479,7 @@
 		};
 		9B125BCA1FD36F5900529304 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 9B125BB61FD36F3B00529304 /* KeychainTest */;
+			target = 9B125BB61FD36F3B00529304 /* MobileHost */;
 			targetProxy = 9B125BC91FD36F5900529304 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -680,7 +680,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KeychainTest.app/KeychainTest";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MobileHost.app/MobileHost";
 			};
 			name = Debug;
 		};
@@ -698,7 +698,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KeychainTest.app/KeychainTest";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MobileHost.app/MobileHost";
 			};
 			name = Release;
 		};
@@ -794,13 +794,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = KeychainTest/KeychainTest.entitlements;
+				CODE_SIGN_ENTITLEMENTS = MobileHost/MobileHost.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = KeychainTest/Info.plist;
+				INFOPLIST_FILE = MobileHost/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.toddkramer.KeychainTest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.toddkramer.MobileHost;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -812,13 +812,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = KeychainTest/KeychainTest.entitlements;
+				CODE_SIGN_ENTITLEMENTS = MobileHost/MobileHost.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = KeychainTest/Info.plist;
+				INFOPLIST_FILE = MobileHost/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.toddkramer.KeychainTest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.toddkramer.MobileHost;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -847,7 +847,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9B125B531FCF95CB00529304 /* Build configuration list for PBXNativeTarget "CodableKeychainTests" */ = {
+		9B125B531FCF95CB00529304 /* Build configuration list for PBXNativeTarget "CodableKeychainMobileTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9B125B541FCF95CB00529304 /* Debug */,
@@ -874,7 +874,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9B125BC61FD36F3B00529304 /* Build configuration list for PBXNativeTarget "KeychainTest" */ = {
+		9B125BC61FD36F3B00529304 /* Build configuration list for PBXNativeTarget "MobileHost" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9B125BC71FD36F3B00529304 /* Debug */,
