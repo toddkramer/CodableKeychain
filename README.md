@@ -84,7 +84,7 @@ CodableKeychain with CocoaPods:
 ``` ruby
 use_frameworks!
 
-pod 'CodableKeychain', '~> 0.4.0'
+pod 'CodableKeychain', '~> 0.5.0'
 ```
 
 3. Run `pod install`.
@@ -106,7 +106,7 @@ import PackageDescription
 let package = Package(
     name: "MyAppTarget",
     dependencies: [
-        .Package(url: "https://github.com/toddkramer/CodableKeychain", majorVersion: 0, minor: 4)
+        .Package(url: "https://github.com/toddkramer/CodableKeychain", majorVersion: 0, minor: 5)
     ]
 )
 ```
@@ -130,7 +130,7 @@ install CodableKeychain with Carthage:
 2. Add CodableKeychain to your Cartfile:
 
 ```
-github "toddkramer/CodableKeychain" ~> 0.4.0
+github "toddkramer/CodableKeychain" ~> 0.5.0
 ```
 
 3. Run `carthage update` and [add the appropriate framework][Carthage Usage].
