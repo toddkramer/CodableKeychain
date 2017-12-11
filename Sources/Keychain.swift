@@ -46,6 +46,12 @@ public final class Keychain {
 
     public static let `default` = Keychain()
 
+    let securityItemManager: SecurityItemManaging
+
+    init(securityItemManager: SecurityItemManaging = SecurityItemManager.default) {
+        self.securityItemManager = securityItemManager
+    }
+
     // MARK: - Public
 
     public func store<T: KeychainStorable>(_ storable: T) throws {
@@ -55,12 +61,14 @@ public final class Keychain {
         var status = noErr
         let newAttributes: [String: Any] = [Constants.valueData: newData, Constants.accessible: storable.accessible.rawValue]
         if existingData != nil {
-            status = SecItemUpdate(query as CFDictionary, newAttributes as CFDictionary)
+            status = securityItemManager.update(withQuery: query, attributesToUpdate: newAttributes)
         } else {
             query.merge(newAttributes) { $1 }
-            status = SecItemAdd(query as CFDictionary, nil)
+            status = securityItemManager.add(withAttributes: query, result: nil)
         }
-        if let error = error(fromStatus: status) { throw error }
+        if let error = error(fromStatus: status) {
+            throw error
+        }
     }
 
     public func retrieveValue<T: KeychainStorable>(with attributes: KeychainAttributes) throws -> T? {
@@ -70,7 +78,7 @@ public final class Keychain {
 
     public func delete<T: KeychainStorable>(_ storable: T) throws {
         let query = self.query(with: storable.keychainAttributes, isRetrieving: false)
-        let status = SecItemDelete(query as CFDictionary)
+        let status = securityItemManager.delete(withQuery: query)
         if let error = error(fromStatus: status) { throw error }
     }
 
@@ -102,7 +110,7 @@ public final class Keychain {
         let query = self.query(with: attributes, isRetrieving: true)
         var result: AnyObject?
         let status = withUnsafeMutablePointer(to: &result) {
-            SecItemCopyMatching(query as CFDictionary, UnsafeMutablePointer($0))
+            securityItemManager.copyMatching(query, result: UnsafeMutablePointer($0))
         }
         if let error = error(fromStatus: status), error != .itemNotFound { throw error }
         return result as? Data

@@ -25,6 +25,36 @@
 import XCTest
 @testable import CodableKeychain
 
+final class MockSecurityItemManager: SecurityItemManaging {
+
+    var addError: KeychainError?
+    var updateError: KeychainError?
+    var deleteError: KeychainError?
+    var copyMatchingError: KeychainError?
+
+    private func status(for error: KeychainError?) -> OSStatus {
+        guard let error = error else { return errSecSuccess }
+        return OSStatus(error.rawValue)
+    }
+
+    func add(withAttributes attributes: [String : Any], result: UnsafeMutablePointer<CFTypeRef?>?) -> OSStatus {
+        return status(for: addError)
+    }
+
+    func update(withQuery query: [String : Any], attributesToUpdate: [String : Any]) -> OSStatus {
+        return status(for: updateError)
+    }
+
+    func delete(withQuery query: [String : Any]) -> OSStatus {
+        return status(for: deleteError)
+    }
+
+    func copyMatching(_ query: [String : Any], result: UnsafeMutablePointer<CFTypeRef?>?) -> OSStatus {
+        return status(for: copyMatchingError)
+    }
+
+}
+
 struct Credential: KeychainStorable {
     let email: String
     let password: String
@@ -67,10 +97,17 @@ class KeychainTests: XCTestCase {
         }
     }
 
-    func testSaveValue() {
+    func testStoreValue() {
         let existingValue: Credential? = try! keychain.retrieveValue(with: credential.keychainAttributes)
         XCTAssertNil(existingValue)
         XCTAssertNoThrow(try keychain.store(credential))
+    }
+
+    func testStoreError() {
+        let mockManager = MockSecurityItemManager()
+        mockManager.addError = .missingEntitlement
+        let keychain = Keychain(securityItemManager: mockManager)
+        XCTAssertThrowsError(try keychain.store(credential))
     }
 
     func testRetrieveValue() {
@@ -134,6 +171,13 @@ class KeychainTests: XCTestCase {
         let status = OSStatus(12345)
         let error = keychain.error(fromStatus: status)
         XCTAssertEqual(error, .unknown)
+    }
+
+    func testDataWithAttributes() {
+        let mockManager = MockSecurityItemManager()
+        mockManager.copyMatchingError = .missingEntitlement
+        let keychain = Keychain(securityItemManager: mockManager)
+        XCTAssertThrowsError(try keychain.data(with: credential.keychainAttributes))
     }
     
 }

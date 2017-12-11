@@ -47,6 +47,10 @@
 		9B8F39741FD4884D005AA8EB /* KeychainStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8F392A1FD462FF005AA8EB /* KeychainStorable.swift */; };
 		9B8F39751FD4884D005AA8EB /* KeychainAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8F392D1FD46357005AA8EB /* KeychainAttributes.swift */; };
 		9B8F39761FD4884D005AA8EB /* Keychain+AccessibleOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8F39341FD463F9005AA8EB /* Keychain+AccessibleOption.swift */; };
+		9BC8ADB51FDF46FE00A0B4E8 /* SecurityItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC8ADB41FDF46FE00A0B4E8 /* SecurityItemManager.swift */; };
+		9BC8ADB61FDF46FE00A0B4E8 /* SecurityItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC8ADB41FDF46FE00A0B4E8 /* SecurityItemManager.swift */; };
+		9BC8ADB71FDF46FE00A0B4E8 /* SecurityItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC8ADB41FDF46FE00A0B4E8 /* SecurityItemManager.swift */; };
+		9BC8ADB81FDF46FE00A0B4E8 /* SecurityItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC8ADB41FDF46FE00A0B4E8 /* SecurityItemManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +104,7 @@
 		9B8F39421FD486C9005AA8EB /* CodableKeychain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CodableKeychain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B8F39681FD487FD005AA8EB /* CodableKeychain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CodableKeychain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B8F39771FD48A64005AA8EB /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		9BC8ADB41FDF46FE00A0B4E8 /* SecurityItemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityItemManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +198,7 @@
 				9B8F392A1FD462FF005AA8EB /* KeychainStorable.swift */,
 				9B8F392D1FD46357005AA8EB /* KeychainAttributes.swift */,
 				9B8F39341FD463F9005AA8EB /* Keychain+AccessibleOption.swift */,
+				9BC8ADB41FDF46FE00A0B4E8 /* SecurityItemManager.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -519,6 +525,7 @@
 				9B8F39351FD463F9005AA8EB /* Keychain+AccessibleOption.swift in Sources */,
 				9B8F39281FD462B3005AA8EB /* KeychainError.swift in Sources */,
 				9B125B8A1FCF99A900529304 /* Keychain.swift in Sources */,
+				9BC8ADB51FDF46FE00A0B4E8 /* SecurityItemManager.swift in Sources */,
 				9B8F39321FD463A5005AA8EB /* CFString+Additions.swift in Sources */,
 				9B8F392E1FD46357005AA8EB /* KeychainAttributes.swift in Sources */,
 				9B8F392B1FD462FF005AA8EB /* KeychainStorable.swift in Sources */,
@@ -542,6 +549,7 @@
 				9B8F39361FD463F9005AA8EB /* Keychain+AccessibleOption.swift in Sources */,
 				9B8F39291FD462B3005AA8EB /* KeychainError.swift in Sources */,
 				9B125BB11FD3647800529304 /* Keychain.swift in Sources */,
+				9BC8ADB61FDF46FE00A0B4E8 /* SecurityItemManager.swift in Sources */,
 				9B8F39331FD463A5005AA8EB /* CFString+Additions.swift in Sources */,
 				9B8F392F1FD46357005AA8EB /* KeychainAttributes.swift in Sources */,
 				9B8F392C1FD462FF005AA8EB /* KeychainStorable.swift in Sources */,
@@ -573,6 +581,7 @@
 				9B8F395F1FD4871A005AA8EB /* Keychain+AccessibleOption.swift in Sources */,
 				9B8F39591FD48710005AA8EB /* CFString+Additions.swift in Sources */,
 				9B8F395D1FD4871A005AA8EB /* KeychainStorable.swift in Sources */,
+				9BC8ADB71FDF46FE00A0B4E8 /* SecurityItemManager.swift in Sources */,
 				9B8F395E1FD4871A005AA8EB /* KeychainAttributes.swift in Sources */,
 				9B8F395C1FD4871A005AA8EB /* KeychainError.swift in Sources */,
 				9B8F395B1FD4871A005AA8EB /* Keychain.swift in Sources */,
@@ -586,6 +595,7 @@
 				9B8F39761FD4884D005AA8EB /* Keychain+AccessibleOption.swift in Sources */,
 				9B8F39711FD48849005AA8EB /* CFString+Additions.swift in Sources */,
 				9B8F39741FD4884D005AA8EB /* KeychainStorable.swift in Sources */,
+				9BC8ADB81FDF46FE00A0B4E8 /* SecurityItemManager.swift in Sources */,
 				9B8F39751FD4884D005AA8EB /* KeychainAttributes.swift in Sources */,
 				9B8F39731FD4884D005AA8EB /* KeychainError.swift in Sources */,
 				9B8F39721FD4884D005AA8EB /* Keychain.swift in Sources */,
