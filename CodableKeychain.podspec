@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'CodableKeychain'
-  s.version = '0.5.0'
+  s.version = '0.6.0'
   s.license = 'MIT'
   s.summary = 'Swift framework for storing Codable conforming objects to the keychain.'
   s.homepage = 'https://github.com/toddkramer/CodableKeychain'
