@@ -41,8 +41,10 @@ public final class Keychain {
         static let matchLimitOne = kSecMatchLimitOne.stringValue
     }
 
-    public static let defaultService: String = Bundle.main.infoDictionary?[kCFBundleIdentifierKey.stringValue] as? String
+    static var defaultIdentifier: String = Bundle.main.infoDictionary?[kCFBundleIdentifierKey.stringValue] as? String
         ?? "com.codablekeychain.service"
+    public private(set) static var defaultService: String = defaultIdentifier
+    public private(set) static var defaultAccessGroup: String? = nil
 
     public static let `default` = Keychain()
 
@@ -54,9 +56,19 @@ public final class Keychain {
 
     // MARK: - Public
 
-    public func store<T: KeychainStorable>(_ storable: T, service: String = defaultService, accessGroup: String? = nil) throws {
+    public static func configureDefaults(withService service: String, accessGroup: String?) {
+        defaultService = service
+        defaultAccessGroup = accessGroup
+    }
+
+    public static func resetDefaults() {
+        defaultService = defaultIdentifier
+        defaultAccessGroup = nil
+    }
+
+    public func store<T: KeychainStorable>(_ storable: T, service: String = defaultService, accessGroup: String? = defaultAccessGroup) throws {
         let newData = try JSONEncoder().encode(storable)
-        var query = self.query(for: storable, isRetrieving: false)
+        var query = self.query(for: storable, service: service, accessGroup: accessGroup, isRetrieving: false)
         let existingData = try data(forAccount: storable.account, service: service, accessGroup: accessGroup)
         var status = noErr
         let newAttributes: [String: Any] = [Constants.valueData: newData, Constants.accessible: storable.accessible.rawValue]
@@ -71,12 +83,13 @@ public final class Keychain {
         }
     }
 
-    public func retrieveValue<T: KeychainStorable>(forAccount account: String, service: String = defaultService, accessGroup: String? = nil) throws -> T? {
+    public func retrieveValue<T: KeychainStorable>(forAccount account: String, service: String = defaultService,
+                                                   accessGroup: String? = defaultAccessGroup) throws -> T? {
         guard let data = try data(forAccount: account, service: service, accessGroup: accessGroup) else { return nil }
         return try JSONDecoder().decode(T.self, from: data)
     }
 
-    public func delete<T: KeychainStorable>(_ storable: T, service: String = defaultService, accessGroup: String? = nil) throws {
+    public func delete<T: KeychainStorable>(_ storable: T, service: String = defaultService, accessGroup: String? = defaultAccessGroup) throws {
         let query = self.query(forAccount: storable.account, service: service, accessGroup: accessGroup, isRetrieving: false)
         let status = securityItemManager.delete(withQuery: query)
         if let error = error(fromStatus: status) { throw error }
@@ -84,7 +97,7 @@ public final class Keychain {
 
     // MARK: - Query
 
-    func query(forAccount account: String, service: String = defaultService, accessGroup: String? = nil, isRetrieving: Bool) -> [String: Any] {
+    func query(forAccount account: String, service: String, accessGroup: String?, isRetrieving: Bool) -> [String: Any] {
         var query: [String: Any] = [
             Constants.service: service,
             Constants.class: Constants.genericPassword,
@@ -100,13 +113,13 @@ public final class Keychain {
         return query
     }
 
-    func query(for storable: KeychainStorable, service: String = defaultService, accessGroup: String? = nil, isRetrieving: Bool) -> [String: Any] {
+    func query(for storable: KeychainStorable, service: String, accessGroup: String?, isRetrieving: Bool) -> [String: Any] {
         var query = self.query(forAccount: storable.account, service: service, accessGroup: accessGroup, isRetrieving: isRetrieving)
         query[Constants.accessible] = storable.accessible.rawValue
         return query
     }
 
-    func data(forAccount account: String, service: String = defaultService, accessGroup: String? = nil) throws -> Data? {
+    func data(forAccount account: String, service: String, accessGroup: String?) throws -> Data? {
         let query = self.query(forAccount: account, service: service, accessGroup: accessGroup, isRetrieving: true)
         var result: AnyObject?
         let status = withUnsafeMutablePointer(to: &result) {

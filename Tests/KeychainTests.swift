@@ -79,6 +79,16 @@ class KeychainTests: XCTestCase {
     let credential = Credential(email: Email.test, password: "foobar", pin: 1234, dob: Date(timeIntervalSince1970: 1000))
     let updatedCredential = Credential(email: Email.test, password: "newpassword", pin: 1357, dob: Date(timeIntervalSince1970: 2000))
     let credentialTwo = Credential(email: Email.newUser, password: "password", pin: 5678, dob: Date(timeIntervalSince1970: 3000))
+
+    var defaultService: String {
+        var defaultService: String
+        #if os(iOS)
+            defaultService = "com.toddkramer.MobileHost"
+        #else
+            defaultService = "com.codablekeychain.service"
+        #endif
+        return defaultService
+    }
     
     override func tearDown() {
         cleanup()
@@ -86,6 +96,7 @@ class KeychainTests: XCTestCase {
     }
 
     func cleanup() {
+        Keychain.resetDefaults()
         do {
             let credentials = [credential, credentialTwo]
             try credentials.forEach {
@@ -95,6 +106,17 @@ class KeychainTests: XCTestCase {
             guard let error = error as? KeychainError else { XCTFail(); return }
             XCTAssertEqual(error, KeychainError.itemNotFound)
         }
+    }
+
+    func testKeychainDefaults() {
+        XCTAssertEqual(Keychain.defaultService, defaultService)
+        XCTAssertNil(Keychain.defaultAccessGroup)
+        Keychain.configureDefaults(withService: "com.service.test", accessGroup: "com.test.accessGroup")
+        XCTAssertEqual(Keychain.defaultService, "com.service.test")
+        XCTAssertEqual(Keychain.defaultAccessGroup, "com.test.accessGroup")
+        Keychain.resetDefaults()
+        XCTAssertEqual(Keychain.defaultService, defaultService)
+        XCTAssertNil(Keychain.defaultAccessGroup)
     }
 
     func testStoreValue() {
@@ -177,7 +199,7 @@ class KeychainTests: XCTestCase {
         let mockManager = MockSecurityItemManager()
         mockManager.copyMatchingError = .missingEntitlement
         let keychain = Keychain(securityItemManager: mockManager)
-        XCTAssertThrowsError(try keychain.data(forAccount: Email.test))
+        XCTAssertThrowsError(try keychain.data(forAccount: Email.test, service: Keychain.defaultService, accessGroup: nil))
     }
     
 }
