@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9B8F39671FD487FD005AA8EB"
-               BuildableName = "CodableKeychainWatch.framework"
+               BuildableName = "CodableKeychain.framework"
                BlueprintName = "CodableKeychainWatch"
                ReferencedContainer = "container:CodableKeychain.xcodeproj">
             </BuildableReference>
@@ -48,7 +48,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9B8F39671FD487FD005AA8EB"
-            BuildableName = "CodableKeychainWatch.framework"
+            BuildableName = "CodableKeychain.framework"
             BlueprintName = "CodableKeychainWatch"
             ReferencedContainer = "container:CodableKeychain.xcodeproj">
          </BuildableReference>
@@ -66,7 +66,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9B8F39671FD487FD005AA8EB"
-            BuildableName = "CodableKeychainWatch.framework"
+            BuildableName = "CodableKeychain.framework"
             BlueprintName = "CodableKeychainWatch"
             ReferencedContainer = "container:CodableKeychain.xcodeproj">
          </BuildableReference>

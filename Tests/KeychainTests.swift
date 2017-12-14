@@ -68,6 +68,17 @@ extension Credential {
 
 }
 
+struct Account: KeychainStorable {
+    let username: String
+    let password: String
+}
+
+extension Account {
+
+    var account: String { return username }
+
+}
+
 class KeychainTests: XCTestCase {
 
     private enum Email {
@@ -79,6 +90,8 @@ class KeychainTests: XCTestCase {
     let credential = Credential(email: Email.test, password: "foobar", pin: 1234, dob: Date(timeIntervalSince1970: 1000))
     let updatedCredential = Credential(email: Email.test, password: "newpassword", pin: 1357, dob: Date(timeIntervalSince1970: 2000))
     let credentialTwo = Credential(email: Email.newUser, password: "password", pin: 5678, dob: Date(timeIntervalSince1970: 3000))
+    let account = Account(username: "test", password: "foobar")
+    let accessGroup = "com.test.accessGroup"
 
     var defaultService: String {
         var defaultService: String
@@ -102,6 +115,7 @@ class KeychainTests: XCTestCase {
             try credentials.forEach {
                 try keychain.delete($0)
             }
+            try keychain.clearAll()
         } catch let error {
             guard let error = error as? KeychainError else { XCTFail(); return }
             XCTAssertEqual(error, KeychainError.itemNotFound)
@@ -163,6 +177,23 @@ class KeychainTests: XCTestCase {
         XCTAssertEqual(updatedValue?.dob, updatedCredential.dob)
     }
 
+    func testRetrieveAccounts() {
+        let existingAccounts = try! keychain.retrieveAccounts()
+        XCTAssertNil(existingAccounts)
+        try! keychain.store(credential)
+        try! keychain.store(credentialTwo)
+        let retrievedAccounts = try! keychain.retrieveAccounts()
+        XCTAssertEqual(retrievedAccounts!, [Email.test, Email.newUser])
+    }
+
+    func testRetrieveAccountsError() {
+        let mockManager = MockSecurityItemManager()
+        let keychain = Keychain(securityItemManager: mockManager)
+        try! keychain.store(credential)
+        mockManager.copyMatchingError = .missingEntitlement
+        XCTAssertThrowsError(try keychain.retrieveAccounts())
+    }
+
     func testMultipleAccounts() {
         XCTAssertNoThrow(try keychain.store(credential))
         XCTAssertNoThrow(try keychain.store(credentialTwo))
@@ -176,9 +207,27 @@ class KeychainTests: XCTestCase {
         XCTAssertThrowsError(try keychain.delete(credential))
     }
 
+    func testClearAll() {
+        try! keychain.store(credential)
+        try! keychain.store(credentialTwo)
+        try! keychain.store(account)
+        let retrievedAccounts = try! keychain.retrieveAccounts()
+        XCTAssertEqual(retrievedAccounts!, [Email.test, Email.newUser, "test"])
+        try! keychain.clearAll()
+        XCTAssertNil(try! keychain.retrieveAccounts())
+    }
+
+    func testDeleteWithQeuryError() {
+        let query = keychain.query(forAccount: Email.test, service: Keychain.defaultService, accessGroup: accessGroup)
+            as! [String: String]
+        let mockManager = MockSecurityItemManager()
+        let mockKeychain = Keychain(securityItemManager: mockManager)
+        mockManager.deleteError = .missingEntitlement
+        XCTAssertThrowsError(try mockKeychain.delete(withQuery: query))
+    }
+
     func testStoreQuery() {
-        let accessGroup = "com.test.accessGroup"
-        let query = keychain.query(forAccount: Email.test, service: Keychain.defaultService, accessGroup: accessGroup, isRetrieving: false)
+        let query = keychain.query(forAccount: Email.test, service: Keychain.defaultService, accessGroup: accessGroup)
             as! [String: String]
         let expectedQuery: [String: String] = [
             kSecAttrService.stringValue: Keychain.defaultService,
