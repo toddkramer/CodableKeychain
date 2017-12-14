@@ -26,8 +26,8 @@ The `KeychainStorable` protocol, which inherits from `Codable`, is used to defin
 import CodableKeychain
 
 enum Constants {
-    static let accessGroup = "[APP_ID_PREFIX].com.example.TestKeychain"
     static let service = "com.example.credentialservice"
+    static let accessGroup = "[APP_ID_PREFIX].com.example.TestKeychain"
 }
 
 struct Credential: KeychainStorable {
@@ -40,11 +40,23 @@ struct Credential: KeychainStorable {
 extension Credential {
 
     var account: String { return email }
-    var service: String { return Constants.service }
-    var accessGroup: String? { return Constants.accessGroup }
     var accessible: Keychain.AccessibleOption { return .whenPasscodeSetThisDeviceOnly }
 
 }
+```
+
+### Configuring Defaults
+
+If the service and access group will be the same for all keychain operations, use the following to configure default values:
+
+```swift
+Keychain.configureDefaults(withService: Constants.service, accessGroup: Constants.accessGroup)
+```
+
+To reset the defaults:
+
+```swift
+Keychain.resetDefaults()
 ```
 
 ### Storing
@@ -62,8 +74,7 @@ do {
 
 ```swift
 do {
-    let attributes = KeychainAttributes(account: "test@example.com", service: Constants.service, accessGroup: Constants.accessGroup)
-    let credential: Credential? = try Keychain.default.retrieveValue(with: attributes)
+    let credential: Credential? = try Keychain.default.retrieveValue(forAccount: "test@example.com")
 } catch let error {
     print(error)
 }
@@ -92,7 +103,7 @@ CodableKeychain with CocoaPods:
 ``` ruby
 use_frameworks!
 
-pod 'CodableKeychain', '~> 0.6.0'
+pod 'CodableKeychain', '~> 0.7.0'
 ```
 
 3. Run `pod install`.
@@ -114,7 +125,7 @@ import PackageDescription
 let package = Package(
     name: "MyAppTarget",
     dependencies: [
-        .Package(url: "https://github.com/toddkramer/CodableKeychain", majorVersion: 0, minor: 6)
+        .Package(url: "https://github.com/toddkramer/CodableKeychain", majorVersion: 0, minor: 7)
     ]
 )
 ```
@@ -138,7 +149,7 @@ install CodableKeychain with Carthage:
 2. Add CodableKeychain to your Cartfile:
 
 ```
-github "toddkramer/CodableKeychain" ~> 0.6.0
+github "toddkramer/CodableKeychain" ~> 0.7.0
 ```
 
 3. Run `carthage update` and [add the appropriate framework][Carthage Usage].
