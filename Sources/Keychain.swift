@@ -54,10 +54,10 @@ public final class Keychain {
 
     // MARK: - Public
 
-    public func store<T: KeychainStorable>(_ storable: T) throws {
+    public func store<T: KeychainStorable>(_ storable: T, service: String = defaultService, accessGroup: String? = nil) throws {
         let newData = try JSONEncoder().encode(storable)
         var query = self.query(for: storable, isRetrieving: false)
-        let existingData = try data(with: storable.keychainAttributes)
+        let existingData = try data(forAccount: storable.account, service: service, accessGroup: accessGroup)
         var status = noErr
         let newAttributes: [String: Any] = [Constants.valueData: newData, Constants.accessible: storable.accessible.rawValue]
         if existingData != nil {
@@ -71,26 +71,26 @@ public final class Keychain {
         }
     }
 
-    public func retrieveValue<T: KeychainStorable>(with attributes: KeychainAttributes) throws -> T? {
-        guard let data = try data(with: attributes) else { return nil }
+    public func retrieveValue<T: KeychainStorable>(forAccount account: String, service: String = defaultService, accessGroup: String? = nil) throws -> T? {
+        guard let data = try data(forAccount: account, service: service, accessGroup: accessGroup) else { return nil }
         return try JSONDecoder().decode(T.self, from: data)
     }
 
-    public func delete<T: KeychainStorable>(_ storable: T) throws {
-        let query = self.query(with: storable.keychainAttributes, isRetrieving: false)
+    public func delete<T: KeychainStorable>(_ storable: T, service: String = defaultService, accessGroup: String? = nil) throws {
+        let query = self.query(forAccount: storable.account, service: service, accessGroup: accessGroup, isRetrieving: false)
         let status = securityItemManager.delete(withQuery: query)
         if let error = error(fromStatus: status) { throw error }
     }
 
     // MARK: - Query
 
-    func query(with attributes: KeychainAttributes, isRetrieving: Bool) -> [String: Any] {
+    func query(forAccount account: String, service: String = defaultService, accessGroup: String? = nil, isRetrieving: Bool) -> [String: Any] {
         var query: [String: Any] = [
-            Constants.service: attributes.service,
+            Constants.service: service,
             Constants.class: Constants.genericPassword,
-            Constants.account: attributes.account
+            Constants.account: account
         ]
-        if let accessGroup = attributes.accessGroup {
+        if let accessGroup = accessGroup {
             query[Constants.accessGroup] = accessGroup
         }
         if isRetrieving {
@@ -100,14 +100,14 @@ public final class Keychain {
         return query
     }
 
-    func query(for storable: KeychainStorable, isRetrieving: Bool) -> [String: Any] {
-        var query = self.query(with: storable.keychainAttributes, isRetrieving: isRetrieving)
+    func query(for storable: KeychainStorable, service: String = defaultService, accessGroup: String? = nil, isRetrieving: Bool) -> [String: Any] {
+        var query = self.query(forAccount: storable.account, service: service, accessGroup: accessGroup, isRetrieving: isRetrieving)
         query[Constants.accessible] = storable.accessible.rawValue
         return query
     }
 
-    func data(with attributes: KeychainAttributes) throws -> Data? {
-        let query = self.query(with: attributes, isRetrieving: true)
+    func data(forAccount account: String, service: String = defaultService, accessGroup: String? = nil) throws -> Data? {
+        let query = self.query(forAccount: account, service: service, accessGroup: accessGroup, isRetrieving: true)
         var result: AnyObject?
         let status = withUnsafeMutablePointer(to: &result) {
             securityItemManager.copyMatching(query, result: UnsafeMutablePointer($0))

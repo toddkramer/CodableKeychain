@@ -98,7 +98,7 @@ class KeychainTests: XCTestCase {
     }
 
     func testStoreValue() {
-        let existingValue: Credential? = try! keychain.retrieveValue(with: credential.keychainAttributes)
+        let existingValue: Credential? = try! keychain.retrieveValue(forAccount: Email.test)
         XCTAssertNil(existingValue)
         XCTAssertNoThrow(try keychain.store(credential))
     }
@@ -111,10 +111,10 @@ class KeychainTests: XCTestCase {
     }
 
     func testRetrieveValue() {
-        let existingValue: Credential? = try! keychain.retrieveValue(with: credential.keychainAttributes)
+        let existingValue: Credential? = try! keychain.retrieveValue(forAccount: Email.test)
         XCTAssertNil(existingValue)
         XCTAssertNoThrow(try keychain.store(credential))
-        let retrievedValue: Credential? = try! keychain.retrieveValue(with: credential.keychainAttributes)
+        let retrievedValue: Credential? = try! keychain.retrieveValue(forAccount: Email.test)
         XCTAssertNotNil(retrievedValue)
         XCTAssertEqual(retrievedValue?.email, credential.email)
         XCTAssertEqual(retrievedValue?.password, credential.password)
@@ -123,17 +123,17 @@ class KeychainTests: XCTestCase {
     }
 
     func testUpdateValue() {
-        let existingValue: Credential? = try! keychain.retrieveValue(with: credential.keychainAttributes)
+        let existingValue: Credential? = try! keychain.retrieveValue(forAccount: Email.test)
         XCTAssertNil(existingValue)
         XCTAssertNoThrow(try keychain.store(credential))
-        let retrievedValue: Credential? = try! keychain.retrieveValue(with: credential.keychainAttributes)
+        let retrievedValue: Credential? = try! keychain.retrieveValue(forAccount: Email.test)
         XCTAssertNotNil(retrievedValue)
         XCTAssertEqual(retrievedValue?.email, credential.email)
         XCTAssertEqual(retrievedValue?.password, credential.password)
         XCTAssertEqual(retrievedValue?.pin, credential.pin)
         XCTAssertEqual(retrievedValue?.dob, credential.dob)
         XCTAssertNoThrow(try keychain.store(updatedCredential))
-        let updatedValue: Credential? = try! keychain.retrieveValue(with: credential.keychainAttributes)
+        let updatedValue: Credential? = try! keychain.retrieveValue(forAccount: Email.test)
         XCTAssertNotNil(updatedValue)
         XCTAssertEqual(updatedValue?.email, credential.email)
         XCTAssertEqual(updatedValue?.password, updatedCredential.password)
@@ -144,8 +144,8 @@ class KeychainTests: XCTestCase {
     func testMultipleAccounts() {
         XCTAssertNoThrow(try keychain.store(credential))
         XCTAssertNoThrow(try keychain.store(credentialTwo))
-        let retrievedOne: Credential? = try! keychain.retrieveValue(with: credential.keychainAttributes)
-        let retrievedTwo: Credential? = try! keychain.retrieveValue(with: credential.keychainAttributes)
+        let retrievedOne: Credential? = try! keychain.retrieveValue(forAccount: Email.test)
+        let retrievedTwo: Credential? = try! keychain.retrieveValue(forAccount: Email.newUser)
         XCTAssertNotNil(retrievedOne)
         XCTAssertNotNil(retrievedTwo)
     }
@@ -156,8 +156,8 @@ class KeychainTests: XCTestCase {
 
     func testStoreQuery() {
         let accessGroup = "com.test.accessGroup"
-        let attributes = KeychainAttributes(account: Email.test, service: Keychain.defaultService, accessGroup: accessGroup)
-        let query = keychain.query(with: attributes, isRetrieving: false) as! [String: String]
+        let query = keychain.query(forAccount: Email.test, service: Keychain.defaultService, accessGroup: accessGroup, isRetrieving: false)
+            as! [String: String]
         let expectedQuery: [String: String] = [
             kSecAttrService.stringValue: Keychain.defaultService,
             kSecClass.stringValue: kSecClassGenericPassword.stringValue,
@@ -177,7 +177,7 @@ class KeychainTests: XCTestCase {
         let mockManager = MockSecurityItemManager()
         mockManager.copyMatchingError = .missingEntitlement
         let keychain = Keychain(securityItemManager: mockManager)
-        XCTAssertThrowsError(try keychain.data(with: credential.keychainAttributes))
+        XCTAssertThrowsError(try keychain.data(forAccount: Email.test))
     }
     
 }
