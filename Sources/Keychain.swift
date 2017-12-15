@@ -58,7 +58,7 @@ public final class Keychain {
 
     // MARK: - Public
 
-    public static func configureDefaults(withService service: String, accessGroup: String?) {
+    public static func configureDefaults(withService service: String = defaultService, accessGroup: String? = defaultAccessGroup) {
         defaultService = service
         defaultAccessGroup = accessGroup
     }
