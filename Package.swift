@@ -24,4 +24,4 @@
 
 import PackageDescription
 
-let package = Package(name: "CodableKeychain", dependencies : [], exclude: ["Tests", "MobileHost"])
+let package = Package(name: "CodableKeychain", dependencies: [], exclude: ["Tests", "MobileHost"])

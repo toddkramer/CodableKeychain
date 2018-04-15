@@ -101,7 +101,7 @@ public final class Keychain {
         }
         if let error = error(fromStatus: status), error != .itemNotFound { throw error }
         guard let attributes = result as? [[String: Any]] else { return nil }
-        return attributes.flatMap { $0[Constants.account] as? String }
+        return attributes.compactMap { $0[Constants.account] as? String }
     }
 
     public func delete<T: KeychainStorable>(_ storable: T, service: String = defaultService, accessGroup: String? = defaultAccessGroup) throws {
