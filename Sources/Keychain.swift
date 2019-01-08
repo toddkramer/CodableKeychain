@@ -27,7 +27,7 @@ import Security
 
 public final class Keychain {
 
-    public enum KeychainAccessError: Error {
+    public enum AccessError: Error {
         case invalidAccountRetrievalResult
         case invalidQueryResult
     }
@@ -105,7 +105,7 @@ public final class Keychain {
             securityItemManager.copyMatching(query, result: UnsafeMutablePointer($0))
         }
         if let error = error(fromStatus: status) { throw error }
-        guard let attributes = result as? [[String: Any]] else { throw KeychainAccessError.invalidAccountRetrievalResult }
+        guard let attributes = result as? [[String: Any]] else { throw AccessError.invalidAccountRetrievalResult }
         return attributes.compactMap { $0[Constants.account] as? String }
     }
 
@@ -164,7 +164,7 @@ public final class Keychain {
             securityItemManager.copyMatching(query, result: UnsafeMutablePointer($0))
         }
         if let error = error(fromStatus: status) { throw error }
-        guard let resultData = result as? Data else { throw KeychainAccessError.invalidQueryResult }
+        guard let resultData = result as? Data else { throw AccessError.invalidQueryResult }
         return resultData
     }
 
