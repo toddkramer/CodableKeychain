@@ -76,12 +76,13 @@ public final class Keychain {
     public func store<T: KeychainStorable>(_ storable: T, service: String = defaultService, accessGroup: String? = defaultAccessGroup) throws {
         let newData = try JSONEncoder().encode(storable)
         var query = self.query(for: storable, service: service, accessGroup: accessGroup)
+        let existingData = try data(forAccount: storable.account, service: service, accessGroup: accessGroup)
         var status = noErr
         let newAttributes: [String: Any] = [Constants.valueData: newData, Constants.accessible: storable.accessible.rawValue]
-        do {
+        if existingData != nil {
             try data(forAccount: storable.account, service: service, accessGroup: accessGroup)
             status = securityItemManager.update(withQuery: query, attributesToUpdate: newAttributes)
-        } catch KeychainError.itemNotFound {
+        } else {
             query.merge(newAttributes) { $1 }
             status = securityItemManager.add(withAttributes: query, result: nil)
         }
@@ -91,8 +92,8 @@ public final class Keychain {
     }
 
     public func retrieveValue<T: KeychainStorable>(forAccount account: String, service: String = defaultService,
-                                                   accessGroup: String? = defaultAccessGroup) throws -> T {
-        let data = try self.data(forAccount: account, service: service, accessGroup: accessGroup)
+                                                   accessGroup: String? = defaultAccessGroup) throws -> T? {
+        guard let data = try data(forAccount: account, service: service, accessGroup: accessGroup) else { return nil }
         return try JSONDecoder().decode(T.self, from: data)
     }
 
@@ -104,7 +105,7 @@ public final class Keychain {
         let status = withUnsafeMutablePointer(to: &result) {
             securityItemManager.copyMatching(query, result: UnsafeMutablePointer($0))
         }
-        if let error = error(fromStatus: status) { throw error }
+        if let error = error(fromStatus: status), error != .itemNotFound { throw error }
         guard let attributes = result as? [[String: Any]] else { throw AccessError.invalidAccountRetrievalResult }
         return attributes.compactMap { $0[Constants.account] as? String }
     }
@@ -155,7 +156,7 @@ public final class Keychain {
     // MARK: - Data
 
     @discardableResult
-    func data(forAccount account: String, service: String, accessGroup: String?) throws -> Data {
+    func data(forAccount account: String, service: String, accessGroup: String?) throws -> Data? {
         var query = self.query(forAccount: account, service: service, accessGroup: accessGroup)
         query[Constants.matchLimit] = Constants.matchLimitOne
         query[Constants.returnData] = kCFBooleanTrue
@@ -163,7 +164,8 @@ public final class Keychain {
         let status = withUnsafeMutablePointer(to: &result) {
             securityItemManager.copyMatching(query, result: UnsafeMutablePointer($0))
         }
-        if let error = error(fromStatus: status) { throw error }
+        if let error = error(fromStatus: status), error != .itemNotFound  { throw error }
+        guard result != nil else { return nil }
         guard let resultData = result as? Data else { throw AccessError.invalidQueryResult }
         return resultData
     }
