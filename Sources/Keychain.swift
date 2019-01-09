@@ -106,6 +106,7 @@ public final class Keychain {
             securityItemManager.copyMatching(query, result: UnsafeMutablePointer($0))
         }
         if let error = error(fromStatus: status), error != .itemNotFound { throw error }
+        guard result != nil else { return [] }
         guard let attributes = result as? [[String: Any]] else { throw AccessError.invalidAccountRetrievalResult }
         return attributes.compactMap { $0[Constants.account] as? String }
     }
