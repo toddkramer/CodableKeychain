@@ -179,11 +179,11 @@ class KeychainTests: XCTestCase {
 
     func testRetrieveAccounts() {
         let existingAccounts = try! keychain.retrieveAccounts()
-        XCTAssertNil(existingAccounts)
+        XCTAssertEqual(existingAccounts, [])
         try! keychain.store(credential)
         try! keychain.store(credentialTwo)
         let retrievedAccounts = try! keychain.retrieveAccounts()
-        XCTAssertEqual(retrievedAccounts!, [Email.test, Email.newUser])
+        XCTAssertEqual(retrievedAccounts, [Email.test, Email.newUser])
     }
 
     func testRetrieveAccountsError() {
@@ -212,9 +212,9 @@ class KeychainTests: XCTestCase {
         try! keychain.store(credentialTwo)
         try! keychain.store(account)
         let retrievedAccounts = try! keychain.retrieveAccounts()
-        XCTAssertEqual(retrievedAccounts!, [Email.test, Email.newUser, "test"])
+        XCTAssertEqual(retrievedAccounts, [Email.test, Email.newUser, "test"])
         try! keychain.clearAll()
-        XCTAssertNil(try! keychain.retrieveAccounts())
+        XCTAssertEqual(try! keychain.retrieveAccounts(), [])
     }
 
     func testDeleteWithQeuryError() {
