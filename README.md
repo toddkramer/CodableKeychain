@@ -1,6 +1,6 @@
 # CodableKeychain
 
-![CocoaPods Version](https://cocoapod-badges.herokuapp.com/v/CodableKeychain/badge.png) [![Swift](https://img.shields.io/badge/swift-4-orange.svg?style=flat)](https://developer.apple.com/swift/) ![Platform](https://cocoapod-badges.herokuapp.com/p/CodableKeychain/badge.png) [![Swift Package Manager compatible](https://img.shields.io/badge/SPM-compatible-4BC51D.svg?style=flat)](https://github.com/apple/swift-package-manager) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+![CocoaPods Version](https://cocoapod-badges.herokuapp.com/v/CodableKeychain/badge.png) [![Swift](https://img.shields.io/badge/swift-4.2-orange.svg?style=flat)](https://developer.apple.com/swift/) ![Platform](https://cocoapod-badges.herokuapp.com/p/CodableKeychain/badge.png) [![Swift Package Manager compatible](https://img.shields.io/badge/SPM-compatible-4BC51D.svg?style=flat)](https://github.com/apple/swift-package-manager) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 ## Overview
 
@@ -103,7 +103,7 @@ CodableKeychain with CocoaPods:
 ``` ruby
 use_frameworks!
 
-pod 'CodableKeychain', '~> 0.8.3'
+pod 'CodableKeychain', '~> 1.0.0'
 ```
 
 3. Run `pod install`.
@@ -125,7 +125,7 @@ import PackageDescription
 let package = Package(
     name: "MyAppTarget",
     dependencies: [
-        .Package(url: "https://github.com/toddkramer/CodableKeychain", majorVersion: 0, minor: 8)
+        .Package(url: "https://github.com/toddkramer/CodableKeychain", majorVersion: 1, minor: 0)
     ]
 )
 ```
@@ -149,7 +149,7 @@ install CodableKeychain with Carthage:
 2. Add CodableKeychain to your Cartfile:
 
 ```
-github "toddkramer/CodableKeychain" ~> 0.8.3
+github "toddkramer/CodableKeychain" ~> 1.0.0
 ```
 
 3. Run `carthage update` and [add the appropriate framework][Carthage Usage].
