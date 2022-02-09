@@ -1,4 +1,4 @@
-// swift-tools-version:5.0
+// swift-tools-version:4.2
 //
 //  Package.swift
 //
@@ -27,12 +27,6 @@ import PackageDescription
 
 let package = Package(
     name: "CodableKeychain",
-    platforms: [
-        .iOS(.v9),
-        .tvOS(.v9),
-        .macOS(.v10_10),
-        .watchOS(.v2)
-    ],
     products: [
         .library(
             name: "CodableKeychain",
@@ -45,9 +39,5 @@ let package = Package(
             path: "Sources",
             exclude: ["Info.plist"]
         )
-    ],
-    swiftLanguageVersions: [
-        .v4_2,
-        .v5
     ]
 )
