@@ -75,12 +75,11 @@ public final class Keychain {
 
     public func store<T: KeychainStorable>(_ storable: T, service: String = defaultService, accessGroup: String? = defaultAccessGroup) throws {
         let newData = try JSONEncoder().encode(storable)
-        var query = self.query(for: storable, service: service, accessGroup: accessGroup)
+        var query = self.query(forAccount: storable.account, service: service, accessGroup: accessGroup)
         let existingData = try data(forAccount: storable.account, service: service, accessGroup: accessGroup)
         var status = noErr
         let newAttributes: [String: Any] = [Constants.valueData: newData, Constants.accessible: storable.accessible.rawValue]
         if existingData != nil {
-            try data(forAccount: storable.account, service: service, accessGroup: accessGroup)
             status = securityItemManager.update(withQuery: query, attributesToUpdate: newAttributes)
         } else {
             query.merge(newAttributes) { $1 }
@@ -148,15 +147,8 @@ public final class Keychain {
         return query
     }
 
-    func query(for storable: KeychainStorable, service: String, accessGroup: String?) -> [String: Any] {
-        var query = self.query(forAccount: storable.account, service: service, accessGroup: accessGroup)
-        query[Constants.accessible] = storable.accessible.rawValue
-        return query
-    }
-
     // MARK: - Data
 
-    @discardableResult
     func data(forAccount account: String, service: String, accessGroup: String?) throws -> Data? {
         var query = self.query(forAccount: account, service: service, accessGroup: accessGroup)
         query[Constants.matchLimit] = Constants.matchLimitOne
