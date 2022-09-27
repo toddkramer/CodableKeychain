@@ -56,6 +56,9 @@ final class MockSecurityItemManager: SecurityItemManaging {
 }
 
 struct Credential: KeychainStorable {
+    static var accessible: Keychain.AccessibleOption = .whenUnlocked
+    var accessible: Keychain.AccessibleOption { Self.accessible }
+
     let email: String
     let password: String
     let pin: Int
@@ -109,6 +112,7 @@ class KeychainTests: XCTestCase {
     }
 
     func cleanup() {
+        Credential.accessible = .whenUnlocked
         Keychain.resetDefaults()
         do {
             let credentials = [credential, credentialTwo]
@@ -168,6 +172,7 @@ class KeychainTests: XCTestCase {
         XCTAssertEqual(retrievedValue?.password, credential.password)
         XCTAssertEqual(retrievedValue?.pin, credential.pin)
         XCTAssertEqual(retrievedValue?.dob, credential.dob)
+        Credential.accessible = .afterFirstUnlock
         XCTAssertNoThrow(try keychain.store(updatedCredential))
         let updatedValue: Credential? = try! keychain.retrieveValue(forAccount: Email.test)
         XCTAssertNotNil(updatedValue)
