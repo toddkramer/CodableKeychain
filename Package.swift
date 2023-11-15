@@ -1,3 +1,4 @@
+// swift-tools-version: 5.8
 //
 //  Package.swift
 //
@@ -24,4 +25,16 @@
 
 import PackageDescription
 
-let package = Package(name: "CodableKeychain", dependencies: [], exclude: ["Tests", "MobileHost"])
+let package = Package(name: "CodableKeychain",
+                      products: [
+                        .library(
+                            name: "CodableKeychain",
+                            targets: ["CodableKeychain"]),
+                      ],
+                      dependencies: [],
+                      targets: [
+                        .target(
+                            name: "CodableKeychain",
+                            path: "Sources"
+                        )
+                      ])
